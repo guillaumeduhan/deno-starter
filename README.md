@@ -27,7 +27,7 @@ A starter template for projects using Deno, including auto-linting, formatting, 
    ```
 
 2. **Run Development Server**:
-   
+
    Start the development server with file watching enabled. The server restarts automatically on any code change:
 
    ```bash
