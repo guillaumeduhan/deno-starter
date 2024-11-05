@@ -1,8 +1,8 @@
-# Deno-Starter (updated Nov. 5th 2024)
+![Deno Starter](https://repository-images.githubusercontent.com/883734988/c6fe1555-d337-45e8-b641-8c349f386c53)
+
+# Deno Starter Project
 
 A starter template for projects using Deno, including auto-linting, formatting, and essential configurations for development.
-
-![Deno Starter](https://repository-images.githubusercontent.com/883734988/c6fe1555-d337-45e8-b641-8c349f386c53)
 
 ## Features
 
@@ -11,10 +11,11 @@ A starter template for projects using Deno, including auto-linting, formatting, 
 - **Formatting**: Customizable code formatting settings to keep code style consistent.
 - **Standard Library Imports**: Convenient imports for frequently used Deno standard libraries.
 - **Third-Party Packages**: Use `chalk` for colorful console output.
+- **Basic Logging Utility**: A simple logging class to keep track of application events in a log file.
 
 ## Requirements
 
-- [Deno](https://deno.land/) (v2.0 or later)
+- [Deno](https://deno.land/) (v1.30 or later)
 
 ## Getting Started
 
@@ -26,11 +27,11 @@ A starter template for projects using Deno, including auto-linting, formatting, 
    ```
 
 2. **Run Development Server**:
-
+   
    Start the development server with file watching enabled. The server restarts automatically on any code change:
 
    ```bash
-   deno task dev
+   make run
    ```
 
 3. **Run Linting**:
@@ -75,6 +76,32 @@ This project is configured with Deno’s `deno.json` for defining tasks, imports
     - Double quotes for strings.
     - Wrap prose as written.
 
+## Logger
+
+The project includes a `Logger` class to handle basic file-based logging. This is useful for recording events, errors, and other relevant information while the application runs.
+
+### Logger Class Overview
+
+- **File Path**: The logger writes to a file named `app.log` in the project root directory.
+- **Timestamp Formatting**: Uses a helper function to create a readable timestamp in `YYYY-MM-DD HH:MM:SS` format.
+- **Log Entries**: Each log entry includes a timestamp, context, and message, appended to `app.log`.
+- **Usage**: Call `log(context, message)` to add an entry to the log file.
+
+### Example Usage
+
+```typescript
+const logger = new Logger();
+await logger.log("Server", "Server started on port 8000");
+await logger.log("Database", "Connected to the database");
+```
+
+This will produce entries in `app.log` such as:
+
+```
+[2023-10-28 14:35:12]: Server started on port 8000
+[2023-10-28 14:35:12]: Connected to the database
+```
+
 ## Available Libraries
 
 The following libraries are available through Deno's imports configuration, so you can use them without manually importing each time:
@@ -83,18 +110,6 @@ The following libraries are available through Deno's imports configuration, so y
 - **`@std/fs`**: File system utilities.
 - **`@std/path`**: Path utilities.
 - **`chalk`**: Use `chalk` to colorize console output (imported via npm).
-
-## Example Usage
-
-```typescript
-import { assertEquals } from "@std/assert";
-import { exists } from "@std/fs";
-import { join } from "@std/path";
-import chalk from "chalk";
-
-// Example of using chalk for colorful output
-console.log(chalk.green("Hello, Deno!"));
-```
 
 ## Additional Notes
 
@@ -105,7 +120,3 @@ console.log(chalk.green("Hello, Deno!"));
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-This README provides a comprehensive overview of the project's setup and configuration, suitable for getting started with a Deno-based application. Let me know if there are any other specifics you'd like to add!
