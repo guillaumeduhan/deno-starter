@@ -1,8 +1,3 @@
-import chalk from "chalk";
-import { Logger } from "./logger.ts";
+import { logger } from "./src/utils.ts";
 
-const logger = new Logger();
-
-const msg = `✅ Deno starts...`;
-logger.log(".", msg);
-console.log(chalk.green(msg));
+logger(`✅ Deno starts...`);

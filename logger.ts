@@ -18,7 +18,7 @@ export class Logger {
 		return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 	}
 
-	async log(context: string, message: string): Promise<void> {
+	async log(message: string): Promise<void> {
 		const timestamp = this.formatTimestamp(new Date());
 		const logEntry = `[${timestamp}]: ${message}\n`;
 		const logPath = join("./", this.logFile);
